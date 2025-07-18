@@ -1,1 +1,27 @@
+document.querySelectorAll('.curso').forEach(curso => {
+  curso.addEventListener('click', () => {
+    curso.classList.toggle('aprobado');
+  });
+});
 
+jsPlumb.ready(() => {
+  jsPlumb.connect({
+    source: "curso1",
+    target: "curso2",
+    anchors: ["BottomCenter", "TopCenter"],
+    endpoint:"Dot",
+    connector:"Flowchart",
+    paintStyle: { stroke:"blue", strokeWidth:2 },
+    overlays:[ ["Arrow", { width:10, length:10, location:1 }] ]
+  });
+
+  jsPlumb.connect({
+    source: "curso2",
+    target: "curso3",
+    anchors: ["BottomCenter", "TopCenter"],
+    endpoint:"Dot",
+    connector:"Flowchart",
+    paintStyle: { stroke:"blue", strokeWidth:2 },
+    overlays:[ ["Arrow", { width:10, length:10, location:1 }] ]
+  });
+});
