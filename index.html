@@ -2,18 +2,126 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla de Carrera Interactiva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Fonoaudiología</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/2.15.6/js/jsplumb.min.js"></script>
+  <script type="module" src="script.js"></script>
 </head>
 <body>
-  <h1>Malla Interactiva - Ejemplo</h1>
-  <div id="canvas">
-    <div class="curso" id="curso1">Intro a la Programación</div>
-    <div class="curso" id="curso2">Estructuras de Datos</div>
-    <div class="curso" id="curso3">Algoritmos</div>
-  </div>
+  <h1>Malla Curricular Fonoaudiología</h1>
+  <div class="mermaid">
+    graph TD
+    subgraph I Semestre
+      A1[Introducción a la Fonoaudiología]:::s1
+      A2[Bases teóricas y prácticas de la comunicación humana]:::s1
+      A3[Anatomía]:::s1
+      A4[Matemáticas]:::s1
+      A5[Física]:::s1
+      A6[Biología molecular y celular]:::s1
+      A7[CFG I]:::s1
+    end
+    subgraph II Semestre
+      B1[Inglés I]:::s2
+      B2[Introducción a la salud pública]:::s2
+      B3[Morfología]:::s2
+      B4[Fisiología I]:::s2
+      B5[Física y fonética acústica]:::s2
+      B6[Sociedad, cultura y comunicación]:::s2
+      B7[Fonética y fonología españolas]:::s2
+    end
+    subgraph III Semestre
+      C1[Fundamentos cognitivos de la comunicación]:::s3
+      C2[Morfosintaxis española]:::s3
+      C3[Psicología del desarrollo infantil]:::s3
+      C4[Fisiología II]:::s3
+      C5[Neurología]:::s3
+      C6[Genética]:::s3
+      C7[Promoción en salud]:::s3
+      C8[CFG II]:::s3
+    end
+    subgraph IV Semestre
+      D1[Intervención fonoaudiológica y bioética aplicada]:::s4
+      D2[Semántica y discurso]:::s4
+      D3[Psicología del desarrollo en adolescentes y adultos]:::s4
+      D4[Psiquiatría]:::s4
+      D5[Fisiopatología y farmacología]:::s4
+      D6[Epidemiología y bioestadística]:::s4
+      D7[Inglés II]:::s4
+    end
+    subgraph V Semestre
+      E1[Evaluación y diagnóstico auditivo y vestibular]:::s5
+      E2[Motricidad orofacial]:::s5
+      E3[Evaluación y diagnóstico de la voz humana]:::s5
+      E4[Diagnóstico de situación de salud y organización]:::s5
+      E5[Gestión I]:::s5
+      E6[Métodos de investigación cualitativos y cuantitativos]:::s5
+      E7[Módulo MIIM I]:::s5
+    end
+    subgraph VI Semestre
+      F1[Intervención auditiva y vestibular]:::s6
+      F2[Intervención del habla]:::s6
+      F3[Intervención de la deglución y motricidad orofacial]:::s6
+      F4[Terapia y técnica de la voz humana]:::s6
+      F5[Eval. y diag. comunicación niños/adolescentes]:::s6
+      F6[Gestión II]:::s6
+      F7[Diseño de proyecto de investigación]:::s6
+      F8[CFG III]:::s6
+    end
+    subgraph VII Semestre
+      G1[Terapia de la comunicación en niños y adolescentes]:::s7
+      G2[Intervención lenguaje y comunicación en adultos]:::s7
+      G3[Intervención fonoaudiológica en el adulto mayor]:::s7
+      G4[Electivo de lingüística aplicada]:::s7
+      G5[Integrado clínico en salud primaria]:::s7
+      G6[Proyecto de investigación I]:::s7
+      G7[CFG IV]:::s7
+    end
+    subgraph VIII Semestre
+      H1[Integrado educativo en niños]:::s8
+      H2[Intervención cognitiva en adultos]:::s8
+      H3[Integrado clínico en adultos]:::s8
+      H4[Electivo disciplinar]:::s8
+      H5[Curso avanzado]:::s8
+      H6[Proyecto de investigación II]:::s8
+      H7[Módulo MIIM II]:::s8
+    end
+    subgraph IX y X Semestre
+      I1[Internado profesional Infanto-Juvenil]:::s9
+      I2[Internado profesional Adultos]:::s9
+      I3[Internado profesional Audiología]:::s9
+      I4[Internado profesional Voz]:::s9
+    end
 
-  <script src="script.js"></script>
+    A1 --> B2
+    A6 --> B3
+    A6 --> B4
+    A5 --> B4
+    A5 --> B5
+    B4 --> C4
+    C4 --> D5
+    C5 --> D4
+    C3 --> D1
+    D1 --> E3
+    E3 --> F4
+    F4 --> G3
+    G3 --> H2
+    H3 --> I1
+    H3 --> I2
+    H3 --> I3
+    H3 --> I4
+    E6 --> F7
+    F7 --> G6
+    G6 --> H6
+
+    classDef s1 fill:#ffdddd,stroke:#ff0000,stroke-width:1px;
+    classDef s2 fill:#ddffdd,stroke:#00aa00,stroke-width:1px;
+    classDef s3 fill:#ddddff,stroke:#0000ff,stroke-width:1px;
+    classDef s4 fill:#fff0cc,stroke:#cc7a00,stroke-width:1px;
+    classDef s5 fill:#ffe0ff,stroke:#cc00cc,stroke-width:1px;
+    classDef s6 fill:#ccffff,stroke:#00aaaa,stroke-width:1px;
+    classDef s7 fill:#f0f0f0,stroke:#555555,stroke-width:1px;
+    classDef s8 fill:#f9f3d2,stroke:#b3a100,stroke-width:1px;
+    classDef s9 fill:#e0e0ff,stroke:#4444aa,stroke-width:1px;
+  </div>
 </body>
 </html>
