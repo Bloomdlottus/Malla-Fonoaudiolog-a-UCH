@@ -1,111 +1,85 @@
 /* style.css */
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 2rem;
-  background-color: #f9f9f9;
-  color: #222;
+  font-family: sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 1.5rem;
   color: #333;
 }
 
-.mermaid {
-  background-color: #fff;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+.malla-container {
+  display: flex;
+  flex-direction: row;
   overflow-x: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-// script.js
-
-const data = [
-  // ... (semestres y ramos ya definidos, sin cambios)
-];
-
-const malla = document.getElementById("malla");
-const colores = ["#e74c3c", "#3498db", "#27ae60", "#f39c12", "#8e44ad", "#16a085", "#d35400"];
-const estadoRamos = {};
-
-function crearMalla() {
-  data.forEach((semestre, idx) => {
-    const col = document.createElement("div");
-    col.className = "semestre";
-    const titulo = document.createElement("h3");
-    titulo.textContent = semestre.semestre;
-    col.appendChild(titulo);
-
-    semestre.ramos.forEach((ramo, i) => {
-      const div = document.createElement("div");
-      div.className = "ramo locked";
-      div.textContent = ramo.nombre;
-      div.style.backgroundColor = colores[(i + idx) % colores.length];
-      div.onclick = () => toggleRamo(ramo.nombre);
-      col.appendChild(div);
-      estadoRamos[ramo.nombre] = {
-        el: div,
-        aprobado: false,
-        prerequisitos: ramo.prerequisitos,
-      };
-    });
-
-    malla.appendChild(col);
-  });
-  cargarProgreso();
-  validarEstado();
+  gap: 20px;
+  padding: 20px 0;
 }
 
-function toggleRamo(nombre) {
-  const ramo = estadoRamos[nombre];
-  if (ramo.el.classList.contains("locked")) return;
-  ramo.aprobado = !ramo.aprobado;
-  ramo.el.classList.toggle("done", ramo.aprobado);
-  guardarProgreso();
-  validarEstado();
+.semestre {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  min-width: 220px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-function validarEstado() {
-  Object.keys(estadoRamos).forEach((nombre) => {
-    const ramo = estadoRamos[nombre];
-    const requisitosCumplidos = ramo.prerequisitos.every(
-      (req) => estadoRamos[req] && estadoRamos[req].aprobado
-    );
-    ramo.el.classList.toggle("locked", !requisitosCumplidos);
-  });
+.semestre h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #222;
 }
 
-function resetMalla() {
-  Object.values(estadoRamos).forEach((ramo) => {
-    ramo.aprobado = false;
-    ramo.el.classList.remove("done");
-  });
-  localStorage.removeItem("progresoMalla");
-  validarEstado();
+.ramo {
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-function exportPDF() {
-  window.print();
+.ramo:hover {
+  opacity: 0.9;
 }
 
-function guardarProgreso() {
-  const progreso = {};
-  Object.keys(estadoRamos).forEach((nombre) => {
-    progreso[nombre] = estadoRamos[nombre].aprobado;
-  });
-  localStorage.setItem("progresoMalla", JSON.stringify(progreso));
+.ramo.locked {
+  background: #aaa !important;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
-function cargarProgreso() {
-  const progreso = JSON.parse(localStorage.getItem("progresoMalla")) || {};
-  Object.entries(progreso).forEach(([nombre, aprobado]) => {
-    if (estadoRamos[nombre]) {
-      estadoRamos[nombre].aprobado = aprobado;
-      if (aprobado) estadoRamos[nombre].el.classList.add("done");
-    }
-  });
+.ramo.done {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
-crearMalla();
+.buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  margin: 0 10px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #2980b9;
+}
