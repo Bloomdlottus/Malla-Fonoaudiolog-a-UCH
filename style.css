@@ -1,27 +1,22 @@
-document.querySelectorAll('.curso').forEach(curso => {
-  curso.addEventListener('click', () => {
-    curso.classList.toggle('aprobado');
-  });
-});
+/* style.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 2rem;
+  background-color: #f9f9f9;
+  color: #222;
+}
 
-jsPlumb.ready(() => {
-  jsPlumb.connect({
-    source: "curso1",
-    target: "curso2",
-    anchors: ["BottomCenter", "TopCenter"],
-    endpoint:"Dot",
-    connector:"Flowchart",
-    paintStyle: { stroke:"blue", strokeWidth:2 },
-    overlays:[ ["Arrow", { width:10, length:10, location:1 }] ]
-  });
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
 
-  jsPlumb.connect({
-    source: "curso2",
-    target: "curso3",
-    anchors: ["BottomCenter", "TopCenter"],
-    endpoint:"Dot",
-    connector:"Flowchart",
-    paintStyle: { stroke:"blue", strokeWidth:2 },
-    overlays:[ ["Arrow", { width:10, length:10, location:1 }] ]
-  });
-});
+.mermaid {
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
